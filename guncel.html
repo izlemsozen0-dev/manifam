@@ -35,12 +35,12 @@ textarea.chat-input:disabled{opacity:.55}
 /* MANIFAM — no-build portable release. All matching, chat, vote and stats data is real Supabase data. */
 const root = document.getElementById('app');
 const MEMBERS = [
-  {id:'sueda',name:'Sueda',emoji:'🌸',tone:'green',color:'#a4d5b1'},
-  {id:'hilal',name:'Hilal',emoji:'🌙',tone:'purple',color:'#c7acf2'},
-  {id:'zeynep',name:'Zeynep',emoji:'⭐',tone:'blue',color:'#aed4f7'},
-  {id:'esin',name:'Esin',emoji:'🌿',tone:'yellow',color:'#ffe382'},
-  {id:'mina',name:'Mina',emoji:'🍓',tone:'red',color:'#f5a5a6'},
-  {id:'lidya',name:'Lidya',emoji:'🦋',tone:'pink',color:'#f4acdc'},
+  {id:'sueda',name:'Sueda',emoji:'🧃',tone:'green',color:'#a4d5b1'},
+  {id:'hilal',name:'Hilal',emoji:'🪩',tone:'purple',color:'#c7acf2'},
+  {id:'zeynep',name:'Zeynep',emoji:'🧿',tone:'blue',color:'#aed4f7'},
+  {id:'esin',name:'Esin',emoji:'🐥',tone:'yellow',color:'#ffe382'},
+  {id:'mina',name:'Mina',emoji:'🪭',tone:'red',color:'#f5a5a6'},
+  {id:'lidya',name:'Lidya',emoji:'🍓',tone:'pink',color:'#f4acdc'},
 ];
 const QUESTIONS = [
   {id:'favorite',prompt:'En sevdiğin Manifest üyesi kim?',hint:'kalbini kime kaptırdın ♥',options:['sueda','hilal','lidya','mina','esin','zeynep']},
@@ -50,7 +50,7 @@ const QUESTIONS = [
 ];
 const REPORT_REASONS=['Rahatsız edici mesaj','Spam','Kurallara aykırı davranış','Diğer'];
 const BUCKETS=['0-25','25-50','50-75','75-100'];
-const ADJECTIVES=['Brat','Minnoş','Yaramaz','Pembe','Mavi','Yeşil','Tatlı','Uslu','Çılgın','Küçük','Sevimli','Hızlı','Uykulu','Neşeli','Sakin','Şirin'];
+const ADJECTIVES=['Brat','Minacı','Yaramaz','Hilalci','Zoktaycı','Esinci','Tatlı','Uslu','Çılgın','Küçük','Sevimli','Suedacı','Uykulu','Neşeli','Lidyacı','Şirin'];
 const FAN_WORDS=['Manifest','Mani','Fest','Stanifest','Fandom','Bias','Stan','Sueda','Hilal','Zeynep','Esin','Mina','Lidya'];
 const ANIMALS=[['Tavşan','🐰'],['Kedi','🐱'],['Tilki','🦊'],['Kurbağa','🐸'],['Panda','🐼'],['Kirpi','🦔'],['Baykuş','🦉'],['Arı','🐝'],['Kelebek','🦋'],['Hamster','🐹'],['Ördek','🦆'],['Penguen','🐧'],['Koala','🐨'],['Sincap','🐿️']];
 const STORE = 'manifam_public_connection_v1';
@@ -97,8 +97,8 @@ function setupView(){return frame('kurulum.exe — ilk bağlantı',`<div class="
   </div>`);}
 function homeView(){return frame('maniFAM.exe — karşılama',`<div class="stack center">
   <div><h1>maniFAM<span>.exe</span></h1><p class="subtitle"><b>Manifest</b> hayranları için internetin minik bir köşesi ♥</p></div>
-  <div class="hero-emoji"><span class="bob">🦋</span> 💗 ✨</div>
-  <p>Rastgele takma ad al, <b>4 soruluk</b> testi çöz, sonra gerçek hayranlarla kurallı ve denetimli sohbet odasında yazış.</p>
+  <div class="hero-emoji"><span class="bob">🎲</span> 🧿 🧚</div>
+  <p>Rastgele takma ad al, <b>4 soruluk</b> testi çöz, sonra gerçek hayranlarla kurallı ve denetimli sohbet odasında tartış ya da sohbet et.</p>
   <div class="pills">${MEMBERS.map(m=>`<span class="pill ${m.tone}-tile">${m.emoji} ${m.name}</span>`).join('')}</div>
   ${messages()}
   <div class="stack-sm">${btn('Fanmily\'e Katıl >>','join','green full big')}${btn('SONUÇLAR / İstatistikler','stats','ghost full')}</div>
@@ -127,7 +127,7 @@ function resultsView(){if(!st.profile||!st.answers.favorite)return frame('profil
   <div class="notice">Gerçek eşleşme bekleniyor. Sahte kullanıcı veya demo sohbet yok.</div>${messages()}
   <div class="stack-sm">${btn('Hadi Eşleşelim! >>','start-match','pink full big')}<div class="buttons">${btn('Testi Tekrar Çöz','quiz-start','ghost')}${btn('Ana Sayfa','home','ghost')}</div></div></div>`);}
 function matchingView(){return frame('sohbet.exe — güvenli lobi',`<div class="stack center"><div class="card">${esc(st.nickname?.emoji)} ${esc(st.nickname?.text)}</div>
-  <div class="hero-emoji"><span class="bob">💗</span> 🦋 ✨</div>
+  <div class="hero-emoji"><span class="bob">🎲</span> 🧿 🧚</div>
   <h2>Manifam aranıyor...</h2><p class="muted">${st.searching?'Gerçek bir kullanıcı bekleniyor. Henüz eşleşme yok.':'Kuyruğa bağlanılıyor...'}</p>
   <div class="loader"><div></div></div><p class="small muted">Yalnızca gerçek kullanıcılar eşleştirilir. Uygun kimse yoksa bu ekranda kalırsın.</p>
   <p class="tiny muted">Kurallı serbest yazışma · kişisel bilgi yok · 15 dakika · bildir & engelle</p>
