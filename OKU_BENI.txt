@@ -1,0 +1,54 @@
+MANIFAM — BOLT OLMADAN YAYINLAMA / 22.11.2026
+==========================================================
+
+Bu ZIP dosyası, Vercel Drop / Netlify Drop / Cloudflare Pages'e
+DOĞRUDAN yüklenebilen hazır statik sitedir. React derlemesi,
+GitHub veya Bolt gerektirmez.
+
+1) Safari'de https://vercel.com/drop adresine gir.
+2) Bu ZIP dosyasını seç, proje adına örneğin 'manifam-community' yaz.
+3) Deploy / Publish seçeneğiyle yayınla.
+4) Yayınlanan sitenin adresini aç. İlk kurulum ekranı çıkacak.
+5) Supabase > Project Settings / Connect bölümünden Project URL'yi,
+   API Keys bölümünden sb_publishable_ ile başlayan Publishable Key'i bul.
+6) Sitede iki kutuyu doldur, Bağlantıyı Test Et ve Kaydet'e bas.
+7) Site sana PAYLAŞIM BAĞLANTISI verecek. Tam bağlantıyı kopyalayıp
+   paylaş. FARKLI CİHAZLAR aynı Supabase projesine bu bağlantıyla bağlanır.
+
+DİKKAT: URL fragment (#project=...) ile başlayan bağlantı herkese açık
+Supabase URL + publishable key'i içerir. Bunlar gizli değildir.
+Ama hiçbir zaman service_role / secret key girme veya paylaşma.
+
+ÖNEMLİ SINIRLAR
+- Bu paketin kaynak kodu sözdizimi denetiminden geçti. Ancak
+  Supabase hesabına erişimimiz olmadığı için iki gerçek cihaz arasında
+  canlı eşleşme henüz doğrulanmadı.
+- Bu sürüm mevcut MANIFAM quizinin 4 sorusunu ve üye renklerini koruyan,
+  yeniden hazırlanmış bir mobil uyumlu uygulamadır. Tasarım orijinalin
+  retro yeşil pencere yaklaşımını izler; piksel piksel aynı değildir.
+- Hazır mesaj dışı serbest yazışma mümkün değildir. Bildir ve Engelle
+  veritabanına kaydedilir. İnsan moderatör paneli ve bildirimi inceleyecek
+  ekip HENÜZ kurulmamıştır. Geniş kitleye açmadan önce denetim gerekir.
+- SQL'deki 8 tablo ve 13 fonksiyon kullanıcı tarafından önceki kurulumda
+  zaten oluşturuldu. ESKİ UZUN CREATE TABLE kodunu tekrar çalıştırma.
+- Eşleşmeler yalnızca çevrimiçi gerçek kullanıcılarla gerçekleşir.
+- Sitede yüklenecek gerçek veri yoksa SONUÇLAR 0 gösterir.
+- Vercel Drop'a yeni ZIP yüklemek yeni site oluşturabilir; mevcut siteyi
+  düzenlemek için Vercel projesine kaynak kod deposu bağlamak önerilir.
+- İleride çıplak alan adı üzerinden kullanıcıların ilk ziyarette
+  otomatik bağlanması istenirse public Project URL/Publishable Key'i
+  statik konfigürasyona koyan ayrı bir yayın paketi yapılmalıdır.
+
+DOSYALAR
+index.html  -- ana sayfa
+styles.css  -- retro tasarım
+app.js      -- tüm quiz/eşleşme/sohbet/istatistik uygulaması
+favicon.svg -- simge
+
+HATA ÇÖZME
+- "Supabase bağlantısı kurulamadı": URL / publishable key yanlış veya
+  internete çıkış yok; Authentication > Anonymous Sign-ins açık olmalı.
+- "function ... not found": SQL fonksiyonu eksik; tekrar tüm SQL'i
+  çalıştırmak yerine ilgili fonksiyonu kontrol et.
+- "relation already exists": önceki tabloları tekrar oluşturma.
+- "no rows returned": boş kullanıcı tablosu için normaldir.
